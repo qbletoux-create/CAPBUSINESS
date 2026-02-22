@@ -1,82 +1,109 @@
 <!doctype html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#1e3a8a" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="theme-color" content="#1e3a8a" />
+    <title>Cap Business - Recommandations</title>
 
-  <title>Cap Business - Recommandations</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>Cap Business</h1>
-      <h2>Outil de Recommandation</h2>
-    </div>
-    <form id="recommendationForm" class="form-card">
-      <div class="form-group">
-        <label for="origine">
-          <span class="label-icon">👤</span>
-          Je (Origine)
-        </label>
-        <select id="origine" name="origine" required>
-          <option value="">Sélectionnez un membre...</option>
-        </select>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Cap Business</h1>
+        <h2>Outil de Recommandation</h2>
       </div>
-      <div class="form-group">
-        <label for="destinataire">
-          <span class="label-icon">🎯</span>
-          Recommande (Destinataire)
-        </label>
-        <select id="destinataire" name="destinataire" required>
-          <option value="">Sélectionnez un membre...</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="date">
-          <span class="label-icon">📅</span>
-          Date de la recommandation
-        </label>
-        <input type="date" id="date" name="date" required />
-      </div>
-      <div class="form-divider">
-        <span>Détails du Contact</span>
-      </div>
-      <div class="form-group">
-        <label for="contact">
-          <span class="label-icon">👤</span>
-          Nom du Contact
-        </label>
-        <input type="text" id="contact" name="contact" placeholder="Prénom Nom" required />
-      </div>
-      <div class="form-group">
-        <label for="email">
-          <span class="label-icon">📧</span>
-          Email
-        </label>
-        <input type="email" id="email" name="email" placeholder="contact@email.com" />
-      </div>
-      <div class="form-group">
-        <label for="telephone">
-          <span class="label-icon">📱</span>
-          Téléphone
-        </label>
-        <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00" />
-      </div>
-      <div class="form-group">
-        <label for="commentaires">
-          <span class="label-icon">💬</span>
-          Commentaires
-        </label>
-        <textarea id="commentaires" name="commentaires" placeholder="Ajoutez un commentaire..." rows="2" style="
+      <form id="recommendationForm" class="form-card">
+        <div class="form-group">
+          <label for="origine">
+            <span class="label-icon">👤</span>
+            Je (Origine)
+          </label>
+          <select id="origine" name="origine" required>
+            <option value="">Sélectionnez un membre...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="destinataire">
+            <span class="label-icon">🎯</span>
+            Recommande (Destinataire)
+          </label>
+          <select id="destinataire" name="destinataire" required>
+            <option value="">Sélectionnez un membre...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">
+            <span class="label-icon">📅</span>
+            Date de la recommandation
+          </label>
+          <input type="date" id="date" name="date" required />
+        </div>
+        <div class="form-divider">
+          <span>Détails du Contact</span>
+        </div>
+        <div class="form-group">
+          <label for="contact">
+            <span class="label-icon">👤</span>
+            Nom du Contact
+          </label>
+          <input
+            type="text"
+            id="contact"
+            name="contact"
+            placeholder="Prénom Nom"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">
+            <span class="label-icon">📧</span>
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="contact@email.com"
+            inputmode="email"
+            autocomplete="email"
+            maxlength="254"
+          />
+        </div>
+        <div class="form-group">
+          <label for="telephone">
+            <span class="label-icon">📱</span>
+            Téléphone
+          </label>
+          <input
+            type="tel"
+            id="telephone"
+            name="telephone"
+            placeholder="06 00 00 00 00"
+            inputmode="tel"
+            autocomplete="tel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="commentaires">
+            <span class="label-icon">💬</span>
+            Commentaires
+          </label>
+          <textarea
+            id="commentaires"
+            name="commentaires"
+            placeholder="Ajoutez un commentaire..."
+            rows="2"
+            style="
               width: 100%;
               padding: 14px 18px;
               border: 2px solid rgba(59, 130, 246, 0.2);
@@ -89,32 +116,42 @@
               font-family: inherit;
               resize: vertical;
               min-height: 52px;
-            "></textarea>
-      </div>
-      <div class="form-group checkbox-group">
-        <label class="checkbox-label" style="
+            "
+          ></textarea>
+        </div>
+        <div class="form-group checkbox-group">
+          <label
+            class="checkbox-label"
+            style="
               display: flex;
               align-items: flex-start;
               gap: 10px;
               cursor: pointer;
-            ">
-          <input type="checkbox" id="consent" name="consent" required
-            style="margin-top: 4px; width: 18px; height: 18px" />
-          <span style="line-height: 1.4">Je confirme que le contact accepte la diffusion de ses
-            coordonnées</span>
-        </label>
-      </div>
-      <div class="form-actions">
-        <button type="submit" class="btn-primary">
-          <span class="btn-text">Envoyer la recommandation</span>
-          <span class="btn-loader" style="display: none">⏳</span>
-        </button>
-      </div>
-      <div id="message" class="message" style="display: none"></div>
-    </form>
-  </div>
+            "
+          >
+            <input
+              type="checkbox"
+              id="consent"
+              name="consent"
+              required
+              style="margin-top: 4px; width: 18px; height: 18px"
+            />
+            <span style="line-height: 1.4"
+              >Je confirme que le contact accepte la diffusion de ses
+              coordonnées</span
+            >
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">
+            <span class="btn-text">Envoyer la recommandation</span>
+            <span class="btn-loader" style="display: none">⏳</span>
+          </button>
+        </div>
+        <div id="message" class="message" style="display: none"></div>
+      </form>
+    </div>
 
-  <script src="index.js"></script>
-</body>
-
+    <script src="index.js"></script>
+  </body>
 </html>
