@@ -1,6 +1,5 @@
 // Configuration
 const WEBHOOK_URL = "https://n8n.srv1156867.hstgr.cloud/webhook/referral";
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
 // Liste des membres Cap Business avec leurs emails
 /** @type {Record<string, string>} */
@@ -199,18 +198,6 @@ async function handleSubmit(event) {
 
   const email = elEmail ? elEmail.value.trim() : "";
   const telephone = elTelephone ? elTelephone.value.trim() : "";
-
-  if (elEmail) {
-    elEmail.setCustomValidity("");
-  }
-  if (email && !EMAIL_REGEX.test(email)) {
-    if (elEmail) {
-      elEmail.setCustomValidity("Veuillez saisir une adresse email valide.");
-      elEmail.reportValidity();
-    }
-    showMessage("⚠️ Format email invalide.", "error");
-    return;
-  }
 
   const formData = {
     origine,
