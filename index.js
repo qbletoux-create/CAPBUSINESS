@@ -5,7 +5,7 @@ const WEBHOOK_URL = "https://n8n.srv1156867.hstgr.cloud/webhook/referral";
 const MEMBRES = {
   "Aurélie Debord": "aurelie.debord@fidal.com",
   "Grégory Doranges": "contact@doranges-avocat.fr",
-  "Guillaume Durand": "larochelle@ixina.com",
+  "Guillaume Durand": "gdurand@ixina.fr",
   "Geoffrey Leduc": "hello@agence-basalte.fr",
   "Gaetan Gousseau": "contact@volttech.fr",
   "Aude Mayaud": "contact@serenaservices.fr",
