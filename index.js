@@ -29,6 +29,7 @@ const MEMBRES = {
   "Jérémy Baty": "[EMAIL-SUPPRIME]",
   "Sabine Cantal": "[EMAIL-SUPPRIME]",
   "Jennifer David": "[EMAIL-SUPPRIME]",
+  "Kévin Louis": "[EMAIL-SUPPRIME]",
 };
 
 // Initialisation au chargement du DOM
