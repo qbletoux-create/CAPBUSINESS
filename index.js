@@ -1,5 +1,5 @@
 // Configuration
-const WEBHOOK_URL = "https://n8n.srv1156867.hstgr.cloud/webhook/referral";
+const WEBHOOK_URL = "https://n8n.laboiteaoutia.fr/webhook/referral";
 
 // Liste des membres Cap Business avec leurs emails
 /** @type {Record<string, string>} */
