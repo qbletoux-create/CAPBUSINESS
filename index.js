@@ -1,36 +1,36 @@
 // Configuration
 const WEBHOOK_URL = "https://n8n.laboiteaoutia.fr/webhook/referral";
 
-// Liste des membres Cap Business avec leurs emails
-/** @type {Record<string, string>} */
-const MEMBRES = {
-  "Aurélie Debord": "[EMAIL-SUPPRIME]",
-  "Grégory Doranges": "[EMAIL-SUPPRIME]",
-  "Guillaume Durand": "[EMAIL-SUPPRIME]",
-  "Geoffrey Leduc": "[EMAIL-SUPPRIME]",
-  "Gaetan Gousseau": "[EMAIL-SUPPRIME]",
-  "Aude Mayaud": "[EMAIL-SUPPRIME]",
-  "Aurélie Doranges": "[EMAIL-SUPPRIME]",
-  "Cyrille Gallais": "[EMAIL-SUPPRIME]",
-  "Vincent Mauvillain": "[EMAIL-SUPPRIME]",
-  "Stéphane Cayez": "[EMAIL-SUPPRIME]",
-  "Denis Dufeu": "[EMAIL-SUPPRIME]",
-  "Stanislas Delanoue": "[EMAIL-SUPPRIME]",
-  "Ava Telisman": "[EMAIL-SUPPRIME]",
-  "Kenny Bouzon": "[EMAIL-SUPPRIME]",
-  "Tarik Arich": "[EMAIL-SUPPRIME]",
-  "Mickael Maingard": "[EMAIL-SUPPRIME]",
-  "Michael Virginius": "[EMAIL-SUPPRIME]",
-  "Sylvain Cordier": "[EMAIL-SUPPRIME]",
-  "Léo Picon": "[EMAIL-SUPPRIME]",
-  "Quentin Bletoux": "[EMAIL-SUPPRIME]",
-  "Jérémy Dos Santos": "[EMAIL-SUPPRIME]",
-  "Romain Chuburu": "[EMAIL-SUPPRIME]",
-  "Jérémy Baty": "[EMAIL-SUPPRIME]",
-  "Sabine Cantal": "[EMAIL-SUPPRIME]",
-  "Jennifer David": "[EMAIL-SUPPRIME]",
-  "Kévin Louis": "[EMAIL-SUPPRIME]",
-};
+// Liste des membres Cap Business (noms uniquement - les emails sont gérés
+// côté serveur par le workflow n8n, jamais exposés au client)
+const MEMBRES = [
+  "Aurélie Debord",
+  "Grégory Doranges",
+  "Guillaume Durand",
+  "Geoffrey Leduc",
+  "Gaetan Gousseau",
+  "Aude Mayaud",
+  "Aurélie Doranges",
+  "Cyrille Gallais",
+  "Vincent Mauvillain",
+  "Stéphane Cayez",
+  "Denis Dufeu",
+  "Stanislas Delanoue",
+  "Ava Telisman",
+  "Kenny Bouzon",
+  "Tarik Arich",
+  "Mickael Maingard",
+  "Michael Virginius",
+  "Sylvain Cordier",
+  "Léo Picon",
+  "Quentin Bletoux",
+  "Jérémy Dos Santos",
+  "Romain Chuburu",
+  "Jérémy Baty",
+  "Sabine Cantal",
+  "Jennifer David",
+  "Kévin Louis",
+];
 
 // Initialisation au chargement du DOM
 document.addEventListener("DOMContentLoaded", function () {
@@ -55,7 +55,7 @@ function initializeForm() {
   setTodayDate();
 
   if (origineSelect && destinataireSelect) {
-    Object.keys(MEMBRES).forEach((membre) => {
+    MEMBRES.forEach((membre) => {
       const optionOrigine = document.createElement("option");
       optionOrigine.value = membre;
       optionOrigine.textContent = membre;
@@ -170,9 +170,7 @@ async function handleSubmit(event) {
   }
 
   const origine = elOrigine.value;
-  const origineEmail = MEMBRES[origine] || "";
   const destinataire = elDestinataire.value;
-  const destinataireEmail = MEMBRES[destinataire] || "";
 
   if (origine && destinataire && origine === destinataire) {
     showMessage(
@@ -182,29 +180,24 @@ async function handleSubmit(event) {
     return;
   }
 
-  if (!origineEmail) {
-    showMessage(
-      `⚠️ Erreur : votre adresse email (${origine}) n'est pas configurée.`,
-      "error",
-    );
+  if (!MEMBRES.includes(origine)) {
+    showMessage(`⚠️ Membre "${origine}" inconnu.`, "error");
     return;
   }
-  if (!destinataireEmail) {
-    showMessage(
-      `⚠️ Impossible d'envoyer : ${destinataire} n'a pas d'adresse email configurée.`,
-      "error",
-    );
+  if (!MEMBRES.includes(destinataire)) {
+    showMessage(`⚠️ Membre "${destinataire}" inconnu.`, "error");
     return;
   }
 
   const email = elEmail ? elEmail.value.trim() : "";
   const telephone = elTelephone ? elTelephone.value.trim() : "";
 
+  // Les emails des membres ne sont plus envoyés depuis le client : le
+  // workflow n8n retrouve destinataireEmail/origineEmail lui-même à partir
+  // du nom, sur la base de sa propre liste (jamais exposée au navigateur).
   const formData = {
     origine,
-    origineEmail,
     destinataire,
-    destinataireEmail,
     contact: elContact.value.trim(),
     email,
     telephone,
@@ -233,7 +226,14 @@ async function handleSubmit(event) {
       form.reset();
       setTodayDate();
     } else {
-      throw new Error(`Erreur serveur (${response.status})`);
+      let serverMessage = "";
+      try {
+        const errorPayload = await response.json();
+        serverMessage = errorPayload && errorPayload.error ? errorPayload.error : "";
+      } catch {
+        // Pas de corps JSON exploitable, on garde le message générique.
+      }
+      throw new Error(serverMessage || `Erreur serveur (${response.status})`);
     }
   } catch (error) {
     const errorMessage =
