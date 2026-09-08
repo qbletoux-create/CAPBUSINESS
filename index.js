@@ -12,10 +12,8 @@ const MEMBRES = [
   "Aude Mayaud",
   "Aurélie Doranges",
   "Cyrille Gallais",
-  "Vincent Mauvillain",
   "Stéphane Cayez",
   "Denis Dufeu",
-  "Stanislas Delanoue",
   "Ava Telisman",
   "Kenny Bouzon",
   "Tarik Arich",
@@ -24,12 +22,11 @@ const MEMBRES = [
   "Sylvain Cordier",
   "Léo Picon",
   "Quentin Bletoux",
-  "Jérémy Dos Santos",
   "Romain Chuburu",
-  "Jérémy Baty",
   "Sabine Cantal",
   "Jennifer David",
   "Kévin Louis",
+  "Sandrine Manzelle",
 ];
 
 // Initialisation au chargement du DOM
