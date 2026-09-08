@@ -27,6 +27,7 @@ const MEMBRES = [
   "Jennifer David",
   "Kévin Louis",
   "Sandrine Manzelle",
+  "test",
 ];
 
 // Initialisation au chargement du DOM
