@@ -1,8 +1,8 @@
 :root {
-  --primary-blue: #1e3a8a;
-  --secondary-blue: #3b82f6;
-  --light-blue: #dbeafe;
-  --accent-blue: #60a5fa;
+  --primary-navy: #0f334b;
+  --secondary-teal: #2cb6b8;
+  --light-teal: #e3f6f6;
+  --accent-teal: #39bbbd;
   --white: #ffffff;
   --gray-light: #f3f4f6;
   --gray-medium: #9ca3af;
@@ -21,7 +21,7 @@ body {
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif;
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%);
+  background: linear-gradient(135deg, #071825 0%, #0f334b 50%, #2cb6b8 100%);
   min-height: 100vh;
   padding: 20px;
   color: var(--gray-dark);
@@ -39,12 +39,12 @@ body::before {
   background:
     radial-gradient(
       circle at 20% 50%,
-      rgba(59, 130, 246, 0.1) 0%,
+      rgba(44, 182, 184, 0.15) 0%,
       transparent 50%
     ),
     radial-gradient(
       circle at 80% 80%,
-      rgba(30, 58, 138, 0.1) 0%,
+      rgba(15, 51, 75, 0.15) 0%,
       transparent 50%
     );
   pointer-events: none;
@@ -63,24 +63,25 @@ body::before {
   margin-bottom: 40px;
 }
 
-.header h1 {
-  color: var(--white);
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+.header .logo {
+  max-width: 220px;
+  width: 60%;
+  height: auto;
+  margin: 0 auto 16px;
+  display: block;
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
 }
 
 .header h2 {
   color: var(--white);
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 8px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .subtitle {
-  color: var(--light-blue);
+  color: var(--light-teal);
   font-size: 1.2rem;
   font-weight: 500;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
@@ -106,7 +107,7 @@ body::before {
   align-items: center;
   gap: 8px;
   margin-bottom: 10px;
-  color: var(--primary-blue);
+  color: var(--primary-navy);
   font-weight: 600;
   font-size: 1rem;
 }
@@ -131,7 +132,7 @@ body::before {
 .form-group select {
   width: 100%;
   padding: 14px 18px;
-  border: 2px solid rgba(59, 130, 246, 0.2);
+  border: 2px solid rgba(44, 182, 184, 0.25);
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
@@ -143,11 +144,11 @@ body::before {
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: var(--secondary-blue);
+  border-color: var(--secondary-teal);
   background: var(--white);
   box-shadow:
-    0 0 0 4px rgba(59, 130, 246, 0.1),
-    0 4px 12px rgba(59, 130, 246, 0.2);
+    0 0 0 4px rgba(44, 182, 184, 0.15),
+    0 4px 12px rgba(44, 182, 184, 0.2);
   transform: translateY(-2px);
 }
 
@@ -158,13 +159,13 @@ body::before {
 .form-divider {
   margin: 32px 0 24px;
   padding-bottom: 8px;
-  border-bottom: 2px solid var(--light-blue);
+  border-bottom: 2px solid var(--light-teal);
   display: flex;
   align-items: center;
 }
 
 .form-divider span {
-  color: var(--primary-blue);
+  color: var(--primary-navy);
   font-weight: 700;
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -172,7 +173,7 @@ body::before {
 }
 
 .checkbox-group {
-  background: var(--light-blue);
+  background: var(--light-teal);
   padding: 16px;
   border-radius: 8px;
   border: 2px solid transparent;
@@ -180,8 +181,8 @@ body::before {
 }
 
 .checkbox-group.checked {
-  background: rgba(59, 130, 246, 0.1);
-  border-color: var(--secondary-blue);
+  background: rgba(44, 182, 184, 0.12);
+  border-color: var(--secondary-teal);
 }
 
 .checkbox-label {
@@ -199,7 +200,7 @@ body::before {
   cursor: pointer;
   width: 20px;
   height: 20px;
-  accent-color: var(--secondary-blue);
+  accent-color: var(--secondary-teal);
 }
 
 .checkbox-label span {
@@ -216,8 +217,8 @@ body::before {
   padding: 16px 28px;
   background: linear-gradient(
     135deg,
-    var(--primary-blue) 0%,
-    var(--secondary-blue) 100%
+    var(--primary-navy) 0%,
+    var(--secondary-teal) 100%
   );
   background-size: 200% 200%;
   color: var(--white);
@@ -228,7 +229,7 @@ body::before {
   cursor: pointer;
   transition: all 0.4s ease;
   box-shadow:
-    0 8px 24px rgba(30, 58, 138, 0.4),
+    0 8px 24px rgba(15, 51, 75, 0.4),
     0 0 0 1px rgba(255, 255, 255, 0.1) inset;
   position: relative;
   overflow: hidden;
@@ -259,7 +260,7 @@ body::before {
 .btn-primary:hover {
   transform: translateY(-3px);
   box-shadow:
-    0 12px 32px rgba(30, 58, 138, 0.5),
+    0 12px 32px rgba(15, 51, 75, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   background-position: 100% 0;
 }
@@ -317,8 +318,8 @@ body::before {
     margin-bottom: 20px;
   }
 
-  .header h1 {
-    font-size: 1.6rem;
+  .header .logo {
+    max-width: 160px;
   }
 
   .subtitle {
@@ -348,7 +349,7 @@ body::before {
   .form-group input:focus,
   .form-group select:focus {
     transform: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 0 0 3px rgba(44, 182, 184, 0.15);
   }
 
   .form-divider {
